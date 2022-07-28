@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <title></title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <link rel="stylesheet" href="./css/style.css">
+   
+
+
+    <div class="wrapper">
+        <div class="input_container">
+        <form action="http://localhost:8888/submit" method="GET">
+            <input type="text" name="cityname" value="{%city}" placeholder="cityname">
+        </form>
+    </div>
+        <div class="temper_container">
+            <div class="temper_box">        
+                <span><label class="cityname">{%cityname}</label></span>
+                <span id="weather">{%weather}</span>
+                <span id="temp">{%tempval}&#8451;</span>
+            </div>
+        </div>
+         <div class="forecast_container">
+            <div class="forecast">
+               
+                <div class="max"><div id="max_min">max</div><p id="text"><b>{%max}&#8451;</b></p></div>
+                <div class="expect"><img src="http://openweathermap.org/img/wn/{%icon}" width="70px">
+                    <p id="text"><b>{%description}</b></p></div>
+                <div class="min"><div id="max_min">HUM</div><p id="text"><b>{%humidity}%</b></p></div>
+            </div>
+            <div id="thought">
+            </div>
+        </div>
+        
+    </div>
+   <script>
+       var thought=document.getElementById('thought');
+fetch("https://type.fit/api/quotes")
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+   var random = data[Math.floor(Math.random() * data.length)];
+    console.log(random.text);
+    thought.innerHTML=""+random.text+"";
+  });
+    </script> 
+
+
+
+</body>
+</html>

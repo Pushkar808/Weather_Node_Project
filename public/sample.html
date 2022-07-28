@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head>
+    <script>
+        function OK() {
+            console.log("OK")
+            var xhttp;
+           // var url="https://api.openweathermap.org/data/2.5/weather?q=Pune&appid=b6e80bc8c85496996ef7132978a18e5c&units=metric"; 
+            if (window.XMLHttpRequest) {
+                // code for modern browsers
+                xhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+             
+                }
+            };
+            xhttp.open("GET","http://localhost:8888/submit?cityname=Pune", true);
+            xhttp.send();
+        }
+
+    </script>
+</head>
+<h1 id="demo">OK</h1>
+<button onclick="OK()">OK</button>
+
+</html>
